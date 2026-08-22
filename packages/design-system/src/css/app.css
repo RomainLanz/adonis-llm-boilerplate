@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+
+@source '../';
+
+@theme {
+	--color-canvas: oklch(97.8% 0.008 245);
+	--color-surface: oklch(100% 0 0);
+	--color-surface-muted: oklch(95.5% 0.015 245);
+	--color-ink: oklch(20% 0.012 245);
+	--color-muted: oklch(48% 0.012 245);
+	--color-border: oklch(87% 0.012 245);
+	--color-accent: oklch(65% 0.15 245);
+	--color-accent-hover: oklch(55% 0.14 245);
+	--color-accent-soft: oklch(94% 0.04 245);
+	--color-accent-ink: white;
+	--color-mint: oklch(65% 0.14 155);
+	--color-mint-soft: oklch(94% 0.05 155);
+	--color-rose: oklch(65% 0.15 15);
+	--color-rose-soft: oklch(94% 0.04 15);
+	--color-lavender: oklch(65% 0.14 290);
+	--color-lavender-soft: oklch(94% 0.04 290);
+	--color-peach: oklch(65% 0.14 55);
+	--color-peach-soft: oklch(94% 0.05 55);
+	--radius-control: 0.625rem;
+	--radius-card: 0.875rem;
+	--shadow-card: 0 1px 2px oklch(20% 0.012 245 / 4%), 0 12px 30px oklch(20% 0.012 245 / 5%);
+}
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	body {
+		margin: 0;
+		background: var(--color-canvas);
+		color: var(--color-ink);
+		font-family: ui-sans-serif, system-ui, sans-serif;
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+	}
+	::selection {
+		background: var(--color-accent-soft);
+		color: var(--color-ink);
+	}
+	button,
+	input,
+	textarea,
+	select {
+		font: inherit;
+	}
+}

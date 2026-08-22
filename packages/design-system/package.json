@@ -1,0 +1,42 @@
+{
+  "name": "@boilerplate/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./css": "./src/css/app.css",
+    "./button": "./src/atoms/button/button.tsx",
+    "./card": "./src/atoms/card/card.tsx",
+    "./field": "./src/molecules/field/field.tsx",
+    "./input": "./src/atoms/input/input.tsx"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "build:storybook": "storybook build",
+    "storybook": "storybook dev -p 6006",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ark-ui/react": "^5.38.2",
+    "tailwind-variants": "catalog:"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.3.0",
+    "@storybook/react-vite": "^10.5.9",
+    "@tailwindcss/vite": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "storybook": "^10.5.9",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

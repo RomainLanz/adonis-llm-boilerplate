@@ -1,0 +1,37 @@
+# Dependencies and AdonisJS build
+node_modules
+build
+apps/*/build
+tmp/*
+!tmp/.gitkeep
+apps/*/tmp/*
+!apps/*/tmp/.gitkeep
+
+# Secrets
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# Frontend assets compiled code
+public/assets
+apps/*/public/assets
+packages/*/storybook-static
+
+# Build tools specific
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+npm-debug.log
+yarn-error.log
+
+# Editors specific
+.fleet
+.idea
+.vscode
+
+# Platform specific
+.DS_Store

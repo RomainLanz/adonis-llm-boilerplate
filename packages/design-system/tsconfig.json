@@ -1,0 +1,10 @@
+{
+	"extends": "@adonisjs/tsconfig/tsconfig.client.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"types": ["react", "react-dom", "vite/client"]
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx", ".storybook/**/*.ts", ".storybook/**/*.tsx"]
+}

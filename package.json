@@ -1,0 +1,35 @@
+{
+  "name": "adonis-llm-boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "start": "yarn workspace @boilerplate/web start",
+    "build": "yarn workspaces foreach -A run build",
+    "dev": "yarn workspace @boilerplate/web dev",
+    "storybook": "yarn workspace @boilerplate/design-system storybook",
+    "test": "yarn workspace @boilerplate/web test",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt --check .",
+    "format:fix": "oxfmt --write .",
+    "taze": "yarn dlx taze -r -I --maturity-period 3",
+    "typecheck": "yarn workspaces foreach -A run typecheck"
+  },
+  "devDependencies": {
+    "@oxlint/plugins": "1.78.0",
+    "oxfmt": "^0.63.0",
+    "oxlint": "1.78.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "packageManager": "yarn@4.17.0"
+}
