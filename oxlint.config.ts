@@ -20,6 +20,7 @@ export default defineConfig({
 		},
 	},
 	rules: {
+		'complexity': 'error',
 		'curly': ['error', 'all'],
 		'project-style/blank-line-after-imports': 'error',
 		'project-style/blank-line-before-if': 'error',
