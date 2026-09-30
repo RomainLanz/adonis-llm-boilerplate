@@ -14,7 +14,7 @@ export default defineConfig({
 		'.claude/**',
 		'.codex/**',
 	],
-	plugins: ['typescript', 'react', 'jsx-a11y', 'react-perf'],
+	plugins: ['typescript', 'react', 'jsx-a11y', 'react-perf', 'import'],
 	jsPlugins: [
 		{ name: 'project-style', specifier: './tools/oxlint/project-style/index.ts' },
 		{ name: 'anti-slop', specifier: './tools/oxlint/anti-slop/index.ts' },
@@ -28,7 +28,9 @@ export default defineConfig({
 	rules: {
 		'complexity': 'error',
 		'curly': ['error', 'all'],
-		'project-style/blank-line-after-imports': 'error',
+		'import/default': 'off',
+		'import/namespace': 'off',
+		'import/newline-after-import': 'error',
 		'project-style/no-typescript-private': 'error',
 		'tenkai/max-params': 'error',
 		'tenkai/no-await-in-call-arguments': 'error',

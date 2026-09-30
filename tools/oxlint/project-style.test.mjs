@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
@@ -21,15 +21,6 @@ const cases = {
 			'class Service { private static run() {} }',
 			'class Service { private constructor(private dependency: string) {} }',
 		],
-	},
-	'blank-line-after-imports': {
-		valid: [
-			'import dependency from "dependency";\n\nexport const value = dependency;',
-			'import dependency from "dependency";\nimport type { Input } from "types";\n\nexport const value = dependency;',
-			'import "dependency";',
-			'export const value = 1;',
-		],
-		invalid: ['import dependency from "dependency";\nexport const value = dependency;'],
 	},
 };
 
@@ -67,12 +58,6 @@ for (const [name, fixtures] of Object.entries(cases)) {
 				assert.equal(result.stderr, '');
 				assert.equal(result.status, category === 'valid' ? 0 : 1, source);
 				assert.equal(diagnostics.length, category === 'valid' ? 0 : 1, source);
-
-				if (name === 'blank-line-after-imports' && category === 'invalid') {
-					const fixed = spawnSync(process.execPath, [...arguments_, '--fix'], { encoding: 'utf8' });
-					assert.equal(fixed.status, 0, fixed.stdout);
-					assert.equal(readFileSync(filename, 'utf8'), fixtures.valid[0]);
-				}
 			}
 		}
 	});

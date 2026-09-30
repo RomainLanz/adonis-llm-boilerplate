@@ -2,8 +2,8 @@
 
 All custom rules are enabled as errors in `oxlint.config.ts`.
 
-- `project-style` requires a blank line after imports and ECMAScript private
-  members, except private constructors and readonly constructor parameter
+- `project-style` requires ECMAScript private members, except private
+  constructors and readonly constructor parameter
   properties. Private constructors enforce factory-only construction;
   JavaScript has no `#constructor`. Mutable private parameter properties
   are still rejected.
@@ -11,6 +11,9 @@ All custom rules are enabled as errors in `oxlint.config.ts`.
   Tenkai. The original source is FIVB/app.fivb.com, branch `feat/support-v1`,
   commit `30e3a9e5b63ceb626a6407ed72b73a95e17b8a8b`.
 - `tenkai` retains its upstream namespace and adds three readability rules.
+
+Oxlint's native `import/newline-after-import` rule requires a blank line after
+imports and provides automatic fixes.
 
 `statement-padding` replaces `project-style/blank-line-before-if`. It separates
 control-flow statements from their siblings and keeps leading comments attached.
