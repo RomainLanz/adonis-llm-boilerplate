@@ -3,6 +3,7 @@ import type { ESTree } from '@oxlint/plugins';
 
 function hasBlankLineBetween(sourceText: string, previous: ESTree.Node, next: ESTree.Node) {
 	const linesBetween = sourceText.slice(previous.end, next.start).split(/\r?\n/u).slice(1, -1);
+
 	return linesBetween.some((line) => line.trim() === '');
 }
 

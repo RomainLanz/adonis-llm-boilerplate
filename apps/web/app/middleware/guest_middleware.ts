@@ -17,8 +17,11 @@ export default class GuestMiddleware {
 
 	async handle(ctx: HttpContext, next: NextFn, options: { guards?: (keyof Authenticators)[] } = {}) {
 		for (let guard of options.guards || [ctx.auth.defaultGuard]) {
-			if (await ctx.auth.use(guard).check()) {
+			const isAuthenticated = await ctx.auth.use(guard).check();
+
+			if (isAuthenticated) {
 				ctx.session.reflash();
+
 				return ctx.response.redirect(this.redirectTo, true);
 			}
 		}

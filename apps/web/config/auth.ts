@@ -21,6 +21,7 @@ const authConfig = defineConfig({
 
 			provider: configProvider.create(async (app) => {
 				const { makeSessionKyselyUserProvider } = await import('#identity/session_user_provider');
+
 				return makeSessionKyselyUserProvider(app);
 			}),
 		}),

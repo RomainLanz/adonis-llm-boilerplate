@@ -31,10 +31,12 @@ export default class RegisterUserController {
 
 		if (!result.ok) {
 			session.flash('error', errorMessages[result.error.type]);
+
 			return response.redirect().back();
 		}
 
 		await auth.use('web').login(result.value);
+
 		return response.redirect().toRoute('home');
 	}
 }

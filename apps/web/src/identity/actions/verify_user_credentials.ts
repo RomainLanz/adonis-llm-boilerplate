@@ -25,10 +25,13 @@ export class VerifyUserCredentials {
 
 		if (!user) {
 			await hash.make('invalid-password');
+
 			return err({ type: 'invalid_credentials' });
 		}
 
-		if (!(await hash.verify(user.passwordHash, params.password))) {
+		const passwordMatches = await hash.verify(user.passwordHash, params.password);
+
+		if (!passwordMatches) {
 			return err({ type: 'invalid_credentials' });
 		}
 

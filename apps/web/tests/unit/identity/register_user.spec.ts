@@ -20,6 +20,7 @@ test.group('RegisterUser', () => {
 		const transactions: TransactionManager = {
 			run() {
 				transactionStarted = true;
+
 				throw new Error('The transaction should not start');
 			},
 			currentDatabase() {
@@ -44,6 +45,7 @@ test.group('RegisterUser', () => {
 		const transactions: TransactionManager = {
 			run() {
 				transactionStarted = true;
+
 				throw new Error('The transaction should not start');
 			},
 			currentDatabase() {
@@ -69,6 +71,7 @@ test.group('RegisterUser', () => {
 		const users = {
 			createUser(payload: CreateUserPayload) {
 				receivedPayload = payload;
+
 				return Promise.resolve(
 					ok(
 						User.create({

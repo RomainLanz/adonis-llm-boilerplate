@@ -50,6 +50,7 @@ export class UserRepository {
 			) {
 				return err({ type: 'email_already_taken' });
 			}
+
 			throw error;
 		}
 	}

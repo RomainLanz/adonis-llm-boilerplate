@@ -12,5 +12,6 @@ export default class UserTransformer extends BaseTransformer<User> {
 
 function initialsFor(user: User) {
 	const parts = (user.name ?? user.email.split('@')[0]).trim().split(/\s+/);
+
 	return (parts.length > 1 ? parts[0][0] + parts.at(-1)![0] : parts[0].slice(0, 2)).toUpperCase();
 }

@@ -17,6 +17,7 @@ export class SessionKyselyUserProvider implements SessionUserProviderContract<Us
 
 	async findById(id: string) {
 		const user = await this.users.findUserById(id);
+
 		return user ? this.createUserForGuard(user) : null;
 	}
 }

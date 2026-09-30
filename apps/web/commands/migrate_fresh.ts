@@ -16,6 +16,7 @@ export default class MigrateFresh extends BaseCommand {
 		if (this.app.inProduction && !this.force) {
 			this.logger.error('The migrate:fresh command is disabled in production without --force');
 			this.exitCode = 1;
+
 			return;
 		}
 

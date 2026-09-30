@@ -14,6 +14,7 @@ export const db = new Kysely<DB>({
 		if (app.inProduction || event.level !== 'query') {
 			return;
 		}
+
 		logger.debug({ duration: event.queryDurationMillis, sql: event.query.sql }, 'database query');
 	},
 });

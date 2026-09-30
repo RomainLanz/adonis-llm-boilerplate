@@ -8,6 +8,7 @@ const config: StorybookConfig = {
 	viteFinal(config) {
 		config.plugins ??= [];
 		config.plugins.push(TailwindCSS());
+
 		return config;
 	},
 };

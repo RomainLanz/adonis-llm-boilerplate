@@ -36,6 +36,7 @@ export default class CreateUser extends BaseCommand {
 		if (!result.ok) {
 			this.logger.error(errorMessages[result.error.type]);
 			this.exitCode = 1;
+
 			return;
 		}
 

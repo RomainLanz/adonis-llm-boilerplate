@@ -22,10 +22,12 @@ export default class LoginController {
 
 		if (!result.ok) {
 			session.flash('error', 'Invalid credentials');
+
 			return response.redirect().back();
 		}
 
 		await auth.use('web').login(result.value);
+
 		return response.redirect().toRoute('home');
 	}
 }

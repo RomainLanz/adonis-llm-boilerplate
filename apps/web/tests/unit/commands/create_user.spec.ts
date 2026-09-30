@@ -29,6 +29,7 @@ test.group('Create user command', (group) => {
 		const registerUser = {
 			execute(params: RegisterUserParams) {
 				receivedParams = params;
+
 				return Promise.resolve(ok(user));
 			},
 		} as RegisterUser;
@@ -69,6 +70,7 @@ test.group('Create user command', (group) => {
 		const registerUser = {
 			execute(params: RegisterUserParams) {
 				receivedParams = params;
+
 				return Promise.resolve(ok(user));
 			},
 		} as RegisterUser;

@@ -30,22 +30,29 @@ class ApiSerializer extends BaseSerializer<{
 	 *
 	 * @throws Error if metadata does not match the expected pagination structure
 	 */
+	// Adonis supplies unknown pagination metadata; this override validates it at the serializer boundary.
+	// eslint-disable-next-line anti-slop/no-unknown-parameters
 	definePaginationMetaData(metaData: unknown): PaginationMetaKeys {
 		if (!isPaginationMetaData(metaData)) {
 			throw new Error('Invalid pagination metadata');
 		}
+
 		return metaData;
 	}
 }
 
+// This boundary guard checks unknown framework metadata before exposing a typed pagination contract.
+/* eslint-disable anti-slop/no-unknown-parameters, anti-slop/no-runtime-typeof, anti-slop/no-reflect-get */
 function isPaginationMetaData(metaData: unknown): metaData is PaginationMetaKeys {
 	if (typeof metaData !== 'object' || metaData === null) {
 		return false;
 	}
+
 	return ['total', 'perPage', 'currentPage', 'lastPage', 'firstPage'].every(
 		(key) => typeof Reflect.get(metaData, key) === 'number',
 	);
 }
+/* eslint-enable anti-slop/no-unknown-parameters, anti-slop/no-runtime-typeof, anti-slop/no-reflect-get */
 
 /**
  * Single instance of ApiSerializer used across the application

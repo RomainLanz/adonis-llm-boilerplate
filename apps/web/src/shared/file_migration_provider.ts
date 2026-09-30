@@ -12,6 +12,7 @@ export class FileMigrationProvider implements MigrationProvider {
 			if (!/\.(?:[cm]?[jt]s)$/.test(fileName) || fileName.endsWith('.d.ts')) {
 				continue;
 			}
+
 			const path = pathToFileURL(this.props.path.join(this.props.migrationFolder, fileName));
 			const migration = await import(path.href);
 
@@ -20,6 +21,7 @@ export class FileMigrationProvider implements MigrationProvider {
 				migrations[fileName.slice(0, fileName.lastIndexOf('.'))] = migration;
 			}
 		}
+
 		return migrations;
 	}
 }
