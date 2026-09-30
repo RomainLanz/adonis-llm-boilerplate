@@ -4,7 +4,8 @@ export const noTypescriptPrivateRule = defineRule({
 	meta: {
 		type: 'problem',
 		docs: {
-			description: 'Require native JavaScript private fields while allowing readonly constructor parameter properties.',
+			description:
+				'Require native JavaScript private members, except constructors and readonly constructor parameter properties.',
 		},
 		messages: {
 			preferNative: 'Use a native JavaScript #private member instead of the TypeScript private modifier.',
@@ -18,7 +19,11 @@ export const noTypescriptPrivateRule = defineRule({
 		};
 
 		return {
-			MethodDefinition: reportPrivateMember,
+			MethodDefinition(node) {
+				if (node.kind !== 'constructor') {
+					reportPrivateMember(node);
+				}
+			},
 			PropertyDefinition: reportPrivateMember,
 			TSParameterProperty(node) {
 				if (node.accessibility === 'private' && !node.readonly) {

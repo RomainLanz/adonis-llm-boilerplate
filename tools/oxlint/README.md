@@ -3,7 +3,10 @@
 All custom rules are enabled as errors in `oxlint.config.ts`.
 
 - `project-style` requires a blank line after imports and ECMAScript private
-  members, except readonly constructor parameter properties.
+  members, except private constructors and readonly constructor parameter
+  properties. Private constructors enforce factory-only construction;
+  JavaScript has no `#constructor`. Mutable private parameter properties
+  are still rejected.
 - `anti-slop` contains 15 contract rules and `statement-padding`, imported from
   Tenkai. The original source is FIVB/app.fivb.com, branch `feat/support-v1`,
   commit `30e3a9e5b63ceb626a6407ed72b73a95e17b8a8b`.
