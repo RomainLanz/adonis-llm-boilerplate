@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { test } from 'node:test';
 import { RuleTester } from 'eslint';
-import plugin from './tenkai.ts';
+import plugin from '../index.ts';
 
 const tester = new RuleTester({ languageOptions: { ecmaVersion: 2022 } });
 
@@ -31,7 +31,7 @@ tester.run('max-params', plugin.rules['max-params'], {
 
 test('TypeScript signatures and injected constructors are checked by OXLint', () => {
 	const directory = mkdtempSync(join(tmpdir(), 'tenkai-max-params-'));
-	const pluginPath = resolve('tools/oxlint/tenkai.ts');
+	const pluginPath = resolve('tools/oxlint/tenkai/index.ts');
 	const configPath = join(directory, 'oxlint.config.ts');
 	const fixturePath = join(directory, 'fixture.ts');
 

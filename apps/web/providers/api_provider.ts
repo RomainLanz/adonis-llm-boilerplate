@@ -31,7 +31,7 @@ class ApiSerializer extends BaseSerializer<{
 	 * @throws Error if metadata does not match the expected pagination structure
 	 */
 	// Adonis supplies unknown pagination metadata; this override validates it at the serializer boundary.
-	// eslint-disable-next-line anti-slop/no-unknown-parameters
+	// eslint-disable-next-line tenkai/no-unknown-parameters
 	definePaginationMetaData(metaData: unknown): PaginationMetaKeys {
 		if (!isPaginationMetaData(metaData)) {
 			throw new Error('Invalid pagination metadata');
@@ -42,7 +42,7 @@ class ApiSerializer extends BaseSerializer<{
 }
 
 // This boundary guard checks unknown framework metadata before exposing a typed pagination contract.
-/* eslint-disable anti-slop/no-unknown-parameters, anti-slop/no-runtime-typeof, anti-slop/no-reflect-get */
+/* eslint-disable tenkai/no-unknown-parameters, tenkai/no-runtime-typeof, tenkai/no-reflect-get */
 function isPaginationMetaData(metaData: unknown): metaData is PaginationMetaKeys {
 	if (typeof metaData !== 'object' || metaData === null) {
 		return false;
@@ -52,7 +52,7 @@ function isPaginationMetaData(metaData: unknown): metaData is PaginationMetaKeys
 		(key) => typeof Reflect.get(metaData, key) === 'number',
 	);
 }
-/* eslint-enable anti-slop/no-unknown-parameters, anti-slop/no-runtime-typeof, anti-slop/no-reflect-get */
+/* eslint-enable tenkai/no-unknown-parameters, tenkai/no-runtime-typeof, tenkai/no-reflect-get */
 
 /**
  * Single instance of ApiSerializer used across the application

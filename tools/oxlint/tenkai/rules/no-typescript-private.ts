@@ -1,4 +1,5 @@
 import { defineRule } from '@oxlint/plugins';
+import type { ESTree } from '@oxlint/plugins';
 
 export const noTypescriptPrivateRule = defineRule({
 	meta: {
@@ -12,7 +13,7 @@ export const noTypescriptPrivateRule = defineRule({
 		},
 	},
 	createOnce(context) {
-		const reportPrivateMember = (node: { accessibility?: 'private' | 'protected' | 'public' | null }) => {
+		const reportPrivateMember = (node: ESTree.MethodDefinition | ESTree.PropertyDefinition) => {
 			if (node.accessibility === 'private') {
 				context.report({ node, messageId: 'preferNative' });
 			}

@@ -38,6 +38,8 @@ This repository is meant to be used as both a starter and an architectural refer
 │   ├── architecture/        application architecture rules
 │   ├── agents/              task-specific guidance for coding agents
 │   └── adr/                 architectural decision records
+├── tools/
+│   └── oxlint/tenkai/       Tenkai custom Oxlint rules and their tests
 ├── compose.yml              local Postgres service
 ├── oxfmt.config.ts          repository-wide formatting rules
 ├── oxlint.config.ts         repository-wide linting rules
@@ -125,6 +127,7 @@ yarn docker:down
 | `yarn typecheck`   | Type-check every workspace                  |
 | `yarn lint`        | Check the repository with Oxlint            |
 | `yarn lint:fix`    | Apply safe Oxlint fixes                     |
+| `yarn test:lint`   | Test the Tenkai custom lint rules           |
 | `yarn format`      | Check formatting with Oxfmt                 |
 | `yarn format:fix`  | Format the repository with Oxfmt            |
 | `yarn docker:up`   | Start local infrastructure                  |

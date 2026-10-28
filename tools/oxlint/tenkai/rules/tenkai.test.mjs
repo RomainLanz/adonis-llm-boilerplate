@@ -47,6 +47,21 @@ const cases = {
 		valid: ['const deployment = 1;'],
 		invalid: ['const deploymentShape = 1;'],
 	},
+	'no-typescript-private': {
+		valid: [
+			'class Service { private constructor(private readonly dependency: string) {} }',
+			'class Service { protected constructor() {} protected run() {} public value = 1; }',
+			'class Service { readonly #value = 1; #run() { return this.#value; } }',
+		],
+		invalid: [
+			'class Service { private value = 1; }',
+			'class Service { private readonly value = 1; }',
+			'class Service { private run() {} }',
+			'class Service { private get value() { return 1; } }',
+			'class Service { private static run() {} }',
+			'class Service { private constructor(private dependency: string) {} }',
+		],
+	},
 	'no-unknown-parameters': {
 		valid: ['function read(cause: unknown) {}'],
 		invalid: ['function read(input: unknown) {}'],
@@ -84,8 +99,8 @@ for (const [name, fixtures] of Object.entries(cases)) {
 		writeFileSync(
 			config,
 			JSON.stringify({
-				jsPlugins: [{ name: 'anti-slop', specifier: fileURLToPath(new URL('../index.ts', import.meta.url)) }],
-				rules: { [`anti-slop/${name}`]: 'error' },
+				jsPlugins: [{ name: 'tenkai', specifier: fileURLToPath(new URL('../index.ts', import.meta.url)) }],
+				rules: { [`tenkai/${name}`]: 'error' },
 			}),
 		);
 
@@ -108,7 +123,7 @@ for (const [name, fixtures] of Object.entries(cases)) {
 				assert.equal(result.status, category === 'valid' ? 0 : 1, result.stderr || source);
 				const diagnostics = JSON.parse(result.stdout).diagnostics;
 				assert.equal(
-					diagnostics.filter((diagnostic) => diagnostic.code === `anti-slop(${name})`).length,
+					diagnostics.filter((diagnostic) => diagnostic.code === `tenkai(${name})`).length,
 					category === 'valid' ? 0 : 1,
 					source,
 				);

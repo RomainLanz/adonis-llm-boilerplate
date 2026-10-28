@@ -1,5 +1,5 @@
 import { RuleTester } from 'eslint';
-import plugin from './tenkai.ts';
+import plugin from '../index.ts';
 
 const tester = new RuleTester();
 

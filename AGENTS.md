@@ -19,4 +19,4 @@ Read [the design system guide](docs/agents/design-system.md) before changing `pa
 
 ## Verification
 
-Run `yarn lint`, `yarn format`, `yarn typecheck`, and `yarn test` before committing. Use Conventional Commits.
+Run `yarn lint`, `yarn format`, `yarn typecheck`, and `yarn test` before committing. Run `yarn test:lint` as well when changing `tools/oxlint` or `oxlint.config.ts`. Custom lint rules live under the `tenkai/` namespace; see [the lint rules guide](tools/oxlint/README.md) before disabling one. Use Conventional Commits.

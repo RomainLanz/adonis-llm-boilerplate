@@ -1,4 +1,7 @@
 import { eslintCompatPlugin } from '@oxlint/plugins';
+import { maxParamsRule } from './rules/max-params.ts';
+import { noAwaitInCallArgumentsRule } from './rules/no-await-in-call-arguments.ts';
+import { noAwaitInConditionsRule } from './rules/no-await-in-conditions.ts';
 import { noChainedTypeAssertionsRule } from './rules/no-chained-type-assertions.ts';
 import { noConditionalEmptyObjectSpreadRule } from './rules/no-conditional-empty-object-spread.ts';
 import { noKnownValueWideningRule } from './rules/no-known-value-widening.ts';
@@ -8,6 +11,7 @@ import { noReflectApplyRule } from './rules/no-reflect-apply.ts';
 import { noReflectGetRule } from './rules/no-reflect-get.ts';
 import { noRuntimeTypeofRule } from './rules/no-runtime-typeof.ts';
 import { noForbiddenTermInSymbolNamesRule } from './rules/no-shape-in-symbol-names.ts';
+import { noTypescriptPrivateRule } from './rules/no-typescript-private.ts';
 import { noUnknownParametersRule } from './rules/no-unknown-parameters.ts';
 import { noUnknownReturnsRule } from './rules/no-unknown-returns.ts';
 import { noUnknownTypeAliasesRule } from './rules/no-unknown-type-aliases.ts';
@@ -16,11 +20,16 @@ import { noWidenThenAssertRule } from './rules/no-widen-then-assert.ts';
 import { requireSafetyCommentForTypeAssertionRule } from './rules/require-safety-comment-for-type-assertion.ts';
 import { statementPaddingRule } from './rules/statement-padding.ts';
 
-/** Generic Oxlint rules that reject low-evidence and low-signal implementation patterns. */
-const antiSlopPlugin = eslintCompatPlugin({
-	meta: { name: 'anti-slop' },
+/**
+ * Tenkai's custom Oxlint rules, imported from its `anti-slop`, `project-style`
+ * and `tenkai` plugins and exposed under the single `tenkai` namespace.
+ */
+export default eslintCompatPlugin({
+	meta: { name: 'tenkai' },
 	rules: {
-		'statement-padding': statementPaddingRule,
+		'max-params': maxParamsRule,
+		'no-await-in-call-arguments': noAwaitInCallArgumentsRule,
+		'no-await-in-conditions': noAwaitInConditionsRule,
 		'no-chained-type-assertions': noChainedTypeAssertionsRule,
 		'no-conditional-empty-object-spread': noConditionalEmptyObjectSpreadRule,
 		'no-known-value-widening': noKnownValueWideningRule,
@@ -29,14 +38,14 @@ const antiSlopPlugin = eslintCompatPlugin({
 		'no-reflect-apply': noReflectApplyRule,
 		'no-reflect-get': noReflectGetRule,
 		'no-runtime-typeof': noRuntimeTypeofRule,
-		'no-unsafe-dictionary-type': noUnsafeDictionaryTypeRule,
 		'no-shape-in-symbol-names': noForbiddenTermInSymbolNamesRule,
+		'no-typescript-private': noTypescriptPrivateRule,
 		'no-unknown-parameters': noUnknownParametersRule,
 		'no-unknown-returns': noUnknownReturnsRule,
 		'no-unknown-type-aliases': noUnknownTypeAliasesRule,
+		'no-unsafe-dictionary-type': noUnsafeDictionaryTypeRule,
 		'no-widen-then-assert': noWidenThenAssertRule,
 		'require-safety-comment-for-type-assertion': requireSafetyCommentForTypeAssertionRule,
+		'statement-padding': statementPaddingRule,
 	},
 });
-
-export default antiSlopPlugin;

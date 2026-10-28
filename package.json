@@ -14,7 +14,7 @@
     "dev": "yarn workspace @boilerplate/web dev",
     "storybook": "yarn workspace @boilerplate/design-system storybook",
     "test": "yarn workspace @boilerplate/web test",
-    "test:lint": "node --test tools/oxlint/anti-slop/rules/*.test.mjs tools/oxlint/*.test.mjs",
+    "test:lint": "node --test tools/oxlint/tenkai/rules/*.test.mjs",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "lint": "oxlint",
