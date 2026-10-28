@@ -25,13 +25,13 @@
     "typecheck": "yarn workspaces foreach -A run typecheck"
   },
   "devDependencies": {
-    "@oxlint/plugins": "1.78.0",
-    "eslint": "^10.11.0",
-    "oxfmt": "^0.63.0",
-    "oxlint": "1.78.0"
+    "@oxlint/plugins": "1.89.0",
+    "eslint": "^10.13.0",
+    "oxfmt": "^0.74.0",
+    "oxlint": "1.89.0"
   },
   "engines": {
     "node": ">=24.0.0"
   },
-  "packageManager": "yarn@4.17.0"
+  "packageManager": "yarn@4.18.1"
 }

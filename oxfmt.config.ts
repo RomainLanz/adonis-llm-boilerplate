@@ -29,5 +29,6 @@ export default {
 		order: 'asc',
 	},
 	trailingComma: 'all',
+	tabWidth: 2,
 	useTabs: true,
 };

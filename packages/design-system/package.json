@@ -18,19 +18,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.38.2",
+    "@ark-ui/react": "^5.39.3",
     "tailwind-variants": "catalog:"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^5.3.0",
-    "@storybook/react-vite": "^10.5.9",
+    "@chromatic-com/storybook": "^5.6.0",
+    "@storybook/react-vite": "^10.6.3",
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "storybook": "^10.5.9",
+    "storybook": "^10.6.3",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:"
